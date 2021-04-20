@@ -1,19 +1,23 @@
 
-import React,{useState} from 'react'
+import React from 'react'
 import './app.css'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Login from './components/login'
 import Sidebar from './components/sidebar'
 import Chat from './components/chat'
-
+import {useStateValue} from './components/stateprovider'
 
 
 function App() {
+  const[{user},dispatch]=useStateValue();
   
   return (
     <div className="app">
-      
-         
+      {!user ? ( <Login/>
+      ):(
+
+     
+        
       
          
      
@@ -25,7 +29,7 @@ function App() {
                   <Chat/>
                 </Route>
                 <Route path="/">
-                  <Chat/>
+                <Chat/>
                 </Route>  
 
         </Switch>
@@ -37,6 +41,7 @@ function App() {
         
 
       </div>
+       )}
      
      
     </div>

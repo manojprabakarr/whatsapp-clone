@@ -10,8 +10,12 @@
 }
 
 .sidebarchat-info >h2{
+    line-height: 1em;
  font-size: larger;
  
+}
+.add-new-chat-title{
+    margin: 0px 0px 0px 10px;
 }
 
 .sidebarchat-info{

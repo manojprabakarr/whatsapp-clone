@@ -1,10 +1,26 @@
 import React from 'react'
-
+import {auth,provider} from '../firebase'
+import {actionTypes} from './reducer'
+import {useStateValue} from './stateprovider'
 import './login.css'
 
 
 
 function Login() {
+    const [{},dispatch]=useStateValue();
+
+    const Signin=()=> {
+        auth
+        .signInWithPopup(provider)
+        .then((result) => {
+            dispatch({
+                type: actionTypes.SET_USER,
+                user: result.user,
+            })
+        })
+        .catch((error) => alert(error.message));
+
+    }
     
     
     return (
@@ -17,7 +33,7 @@ function Login() {
 
                </div>
 
-               <button type="submit">Login to Google</button>
+               <button type="submit" onClick={Signin}>Login to Google</button>
 
            </div>
 
